@@ -40,6 +40,9 @@ const mavenBomResultFileName = getResultsFilePath('vaadin-bom.xml');
 const mavenSpringBomTemplateFileName = getTemplateFilePath('template-vaadin-spring-bom.xml');
 const mavenSpringBomResultFileName = getResultsFilePath('vaadin-spring-bom.xml');
 
+const bundlesTemplateFileName = getTemplateFilePath('template-bundles-package.json');
+const bundlesResultFileName = getResultsFilePath('bundles-package.json');
+
 const releaseNotesTemplateFileName = getTemplateFilePath('template-release-notes.md');
 const releaseNotesResultFileName = getResultsFilePath('release-notes.md');
 
@@ -61,7 +64,6 @@ const gradlePluginResultPomFileName = getResultsFilePath('vaadin-gradle-plugin-p
 const gradlePortalPluginTemplatePomFileName = getTemplateFilePath('template-vaadin-gradle-plugin-portal-pom.xml');
 const gradlePortalPluginResultPomFileName = getResultsFilePath('vaadin-gradle-plugin-portal-pom.xml');
 
-
 const servletContainersTestsPomFileName = getTemplateFilePath('template-servlet-containers-tests-pom.xml');
 const servletContainersTestsResultPomFileName = getResultsFilePath('vaadin-platform-servlet-containers-tests-pom.xml');
 
@@ -82,6 +84,8 @@ writer.writeMaven(versions, mavenSpringBomTemplateFileName, mavenSpringBomResult
 writer.writeReleaseNotes(versions, releaseNotesTemplateFileName, releaseNotesResultFileName);
 writer.writeReleaseNotes(versions, releaseNotesMaintenanceTemplateFileName, releaseNotesMaintenanceResultFileName);
 writer.writeReleaseNotes(versions, releaseNotesPrereleaseTemplateFileName, releaseNotesPrereleaseResultFileName);
+
+writer.writePackageJson(versions.core, bundlesTemplateFileName,bundlesResultFileName);
 
 writer.writeProperty(versions, "flow", mavenPluginTemplatePomFileName, mavenPluginResultPomFileName);
 writer.writeProperty(versions, "flow", hillaMavenPluginTemplatePomFileName, hillaMavenPluginResultPomFileName);

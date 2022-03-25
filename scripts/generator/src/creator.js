@@ -24,6 +24,35 @@ function createPackageJson(versions, packageJsonTemplate) {
     return JSON.stringify(packageJsonTemplate, null, 2);
 }
 
+function createBundlePackageJson(versions, packageJsonTemplate) {
+    let jsDeps = {};
+    for (let [name, version] of Object.entries(versions.core)) {
+        if (version.npmName && !version.npmName.startsWith("@vaadin/vaadin")) {
+            const npmVersion = version.npmVersion || version.jsVersion;
+            if (version.npmName.startsWith("@vaadin")) {
+                jsDeps[version.npmName] = npmVersion;
+            } else {
+                jsDeps[version.npmName] = "^" + npmVersion;
+            }
+        }
+    }
+
+    for (let [name, version] of Object.entries(versions.vaadin)) {
+        if (version.npmName && !version.npmName.startsWith("@vaadin/vaadin")) {
+            const npmVersion = version.npmVersion || version.jsVersion;
+            if (version.npmName.startsWith("@vaadin")) {
+                jsDeps[version.npmName] = npmVersion;
+            } else {
+                jsDeps[version.npmName] = "^" + npmVersion;
+            }
+        }
+    }
+
+    packageJsonTemplate.devDependencies = Object.assign({}, packageJsonTemplate.devDependencies, jsDeps);
+
+    return JSON.stringify(packageJsonTemplate, null, 2);
+}
+
 /**
 @param {Object} versions data object for product versions.
 @param {String} mavenTemplate template string to replace versions in.
@@ -474,6 +503,7 @@ function requestGH(path) {
 }
 
 exports.createPackageJson = createPackageJson;
+exports.createBundlePackageJson = createBundlePackageJson;
 exports.createMaven = createMaven;
 exports.createReleaseNotes = createReleaseNotes;
 exports.addProperty = addProperty;

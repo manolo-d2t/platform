@@ -85,7 +85,7 @@ writer.writeReleaseNotes(versions, releaseNotesTemplateFileName, releaseNotesRes
 writer.writeReleaseNotes(versions, releaseNotesMaintenanceTemplateFileName, releaseNotesMaintenanceResultFileName);
 writer.writeReleaseNotes(versions, releaseNotesPrereleaseTemplateFileName, releaseNotesPrereleaseResultFileName);
 
-writer.writePackageJson(versions.core, bundlesTemplateFileName,bundlesResultFileName);
+writer.writeBundlePackageJson(versions, bundlesTemplateFileName,bundlesResultFileName);
 
 writer.writeProperty(versions, "flow", mavenPluginTemplatePomFileName, mavenPluginResultPomFileName);
 writer.writeProperty(versions, "flow", hillaMavenPluginTemplatePomFileName, hillaMavenPluginResultPomFileName);

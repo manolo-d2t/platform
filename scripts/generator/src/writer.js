@@ -8,8 +8,15 @@ const fs = require('fs');
 */
 function writePackageJson(versions, templateFileName, outputFileName) {
     const packageJsonTemplate = require(templateFileName);
-    //packageJsonTemplate.version = versions.core.accordion.jsVersion;
     const packageJsonResult = creator.createPackageJson(versions, packageJsonTemplate);
+
+    fs.writeFileSync(outputFileName, packageJsonResult);
+    console.log(`Wrote ${outputFileName}`);
+}
+
+function writeBundlePackageJson(versions, templateFileName,outputFileName) {
+    const packageJsonTemplate = require(templateFileName);
+    const packageJsonResult = creator.createBundlePackageJson(versions, packageJsonTemplate);
 
     fs.writeFileSync(outputFileName, packageJsonResult);
     console.log(`Wrote ${outputFileName}`);
@@ -86,6 +93,7 @@ function writeModulesReleaseNotes(versions, templateFileName, outputFileName) {
 }
 
 exports.writePackageJson = writePackageJson;
+exports.writeBundlePackageJson = writeBundlePackageJson;
 exports.writePackageVersion = writePackageVersion;
 exports.writeMaven = writeMaven;
 exports.writeProperty = writeProperty;

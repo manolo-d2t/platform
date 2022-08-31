@@ -43,7 +43,7 @@ public class LicenseCheckTest {
         whitelist.add("http://www.eclipse.org/legal/epl-2.0");
         whitelist.add("https://www.eclipse.org/legal/epl-v20.html");
         whitelist.add("https://projects.eclipse.org/license/epl-2.0");
-        
+
         // Mozilla
         whitelist.add("http://www.mozilla.org/MPL/MPL-1.1.html");
         whitelist.add("http://www.mozilla.org/MPL/2.0/index.txt");
@@ -90,26 +90,26 @@ public class LicenseCheckTest {
 
         // gwt, javaee, glassfish
         whitelist.add("http://www.gwtproject.org/terms.html");
-        whitelist.add("https://github.com/javaee/javax.annotation/blob/master/LICENSE");
+        whitelist.add("https://github.com/javaee/jakarta.annotation/blob/master/LICENSE");
         whitelist.add("https://glassfish.dev.java.net/public/CDDLv1.0.html");
         whitelist.add("https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html");
 
         // aopalliance:aopalliance
         whitelist.add("Public Domain");
-        
+
         // Universal Permissive License
         whitelist.add("http://opensource.org/licenses/UPL");
-        
+
         // BSD-3-Clause
         whitelist.add("https://asm.ow2.io/license.html");
-        
+
         // GNU General Public License
         whitelist.add("https://projects.eclipse.org/license/secondary-gpl-2.0-cp");
 
         //CDDL + GPLv2 with classpath exception
         whitelist.add("https://oss.oracle.com/licenses/CDDL+GPL-1.1");
         whitelist.add("https://javaee.github.io/javamail/LICENSE");
-        
+
     }
 
     private static final List<String> excludeDirs = Arrays.asList(".git", "bower_components", "node", "node_modules",
